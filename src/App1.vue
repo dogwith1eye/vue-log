@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
-import { LogMessages, Logger } from './cababilities/LogMessages';
+import { LogMessages, log } from './cababilities/LogMessages';
 import { LogType } from './data/Log';
 
 @Component({
@@ -17,10 +17,10 @@ import { LogType } from './data/Log';
   },
 })
 export default class App extends Vue {
-  @Prop() logger: Logger;
+  @Prop() logMessages: LogMessages;
 
   mounted () {
-    this.logger.log(LogType.Debug, "App Mounted");
+    log(this.logMessages, LogType.Debug, "App Mounted");
   }
 }
 </script>
